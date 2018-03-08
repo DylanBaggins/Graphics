@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
 	glDeleteShader(fSh.shaderID);
 
 	//maybe 100 triangles????
-	tri.randoTriangles();
+	//tri.randoTriangles();
 
 	//OpenGL buffers
 	//set buffers for the triangle
@@ -114,6 +114,21 @@ int main(int argc, char *argv[]) {
 			if (event.type == SDL_QUIT)
 			{
 				windowOpen = false;
+			}
+			if (event.type == SDL_KEYDOWN)
+			{
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_a:
+					tri.randoTriangles();
+					tri.setBuffers();
+					break;
+				case SDLK_d:
+
+					break;
+				default:
+					break;
+				}
 			}
 		}
 	}
