@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\user\Desktop\CMP2012M Code\src\main_tri.cpp">
+    <ClCompile Include="E:\Graphics\Graphics\src\main_tri.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\user\Desktop\CMP2012M Code\src\ShaderClass.h">
+    <ClInclude Include="E:\Graphics\Graphics\src\ShaderClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\user\Desktop\CMP2012M Code\src\Triangle.h">
+    <ClInclude Include="E:\Graphics\Graphics\src\Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\user\Desktop\CMP2012M Code\CMakeLists.txt" />
+    <CustomBuild Include="E:\Graphics\Graphics\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{853B7299-BAC0-3EFD-B271-C5F9B9B403EA}</UniqueIdentifier>
+      <UniqueIdentifier>{EE9AD780-2B38-3FD4-B99A-D67BDF54D5F3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{A79BC28C-4ACC-30C9-8F90-448822DDDEDB}</UniqueIdentifier>
+      <UniqueIdentifier>{312AD3C5-DA98-357D-A93B-2784596D8295}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

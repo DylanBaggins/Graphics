@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Triangle.h"
 #include "ShaderClass.h"
+#include <chrono>
+#include <ctime>
+#include <ratio>
+#include <thread>
 
 // // GLEW - OpenGL Extension Wrangler - http://glew.sourceforge.net/
 // // NOTE: include before SDL.h
@@ -48,6 +52,8 @@ int main(int argc, char *argv[]) {
 
 	std::cout << "OpenGL version is" << glGetString(GL_VERSION) << std::endl;
 
+	//timer stuff
+	auto t_start = std::chrono::high_resolution_clock::now();
 
 	//create objects
 	Triangle tri;
@@ -72,6 +78,7 @@ int main(int argc, char *argv[]) {
 	shaderProgram = glCreateProgram();
 	glAttachShader(shaderProgram, vSh.shaderID);
 	glAttachShader(shaderProgram, fSh.shaderID);
+
 	glLinkProgram(shaderProgram);
 
 	//link shaderProgram, delete shaders
@@ -79,8 +86,8 @@ int main(int argc, char *argv[]) {
 	glDeleteShader(vSh.shaderID);
 	glDeleteShader(fSh.shaderID);
 
-	//maybe 100 triangles????
-	//tri.randoTriangles();
+	//set colours extrenally
+	GLint uniColour = glGetUniformLocation(shaderProgram, "triangleColour");
 
 	//OpenGL buffers
 	//set buffers for the triangle
@@ -95,7 +102,11 @@ int main(int argc, char *argv[]) {
 		glClearColor(0.0f, 0.0f, 0.0f, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
 		// Drawing code
-		// Draw the object
+		auto t_now = std::chrono::high_resolution_clock::now();
+		float time = std::chrono::duration_cast<std::chrono::duration<float>>(t_now - t_start).count();
+
+		glUniform3f(uniColour, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
+		//glUniform3f(uniColour, 1.0f, 0.0f, 0.0f);
 		glUseProgram(shaderProgram);
 		glBindVertexArray(tri.VAO);
 		//set to wireframe so we can see the triangle
@@ -103,11 +114,8 @@ int main(int argc, char *argv[]) {
 		//drawing 3 vertices (1 triangle)
 		glDrawArrays(GL_TRIANGLES, 0, 300);
 		glBindVertexArray(0);
-
 		
 		SDL_GL_SwapWindow(win);
-
-
 	
 		if (SDL_PollEvent(&event))
 		{
